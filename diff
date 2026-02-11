@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Ti ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Corazones flotando */
+.heart {
+    position: absolute;
+    color: rgba(255,255,255,0.8);
+    animation: float 6s linear infinite;
+    font-size: 20px;
+}
+
+@keyframes float {
+    0% {transform: translateY(100vh) scale(1);}
+    100% {transform: translateY(-10vh) scale(1.5);}
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    text-align: center;
+    max-width: 400px;
+    animation: fadeIn 2s ease-in-out;
+    position: relative;
+    z-index: 10;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    color: #e63946;
+}
+
+p {
+    font-size: 18px;
+    color: #444;
+    line-height: 1.5;
+}
+
+.buttons {
+    margin-top: 20px;
+    position: relative;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 5px;
+}
+
+#yesBtn {
+    background-color: #e63946;
+    color: white;
+}
+
+#noBtn {
+    background-color: #aaa;
+    color: white;
+    position: absolute;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <!-- CAMBIA ESTA IMAGEN POR LA TUYA -->
+    <img src="https://via.placeholder.com/400x250" alt="Nuestra Foto">
+
+    <h1>Feliz 14 de Febrero ❤️</h1>
+    <p>
+        Desde que estás en mi vida todo es más bonito.  
+        No quiero que este día sea uno más…  
+        quiero que lo vivamos juntos.
+    </p>
+
+    <div class="buttons">
+        <button id="yesBtn">Sí 💕</button>
+        <button id="noBtn">No 😢</button>
+    </div>
+</div>
+
+<script>
+// Crear corazones
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 300);
+
+// Botón que se escapa
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * 300 - 150;
+    const y = Math.random() * 200 - 100;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+// Botón sí con animación
+const yesBtn = document.getElementById("yesBtn");
+
+yesBtn.addEventListener("click", () => {
+    document.body.innerHTML = `
+        <div style="text-align:center; color:white;">
+            <h1 style="font-size:40px;">Sabía que dirías que sí ❤️</h1>
+            <p style="font-size:24px;">Prepárate para el mejor 14 de febrero juntos ✨</p>
+        </div>
+    `;
+});
+</script>
+
+</body>
+</html>
